@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Product Details | Lumière</title>
+<meta name="description" content="Discover the craftsmanship, materials and dimensions behind every Lumière piece." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+<style>
+  .product-details-layout { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-7); padding: var(--space-5) 0 var(--space-8); }
+  .gallery-main { aspect-ratio: 1/1.05; border-radius: var(--radius-lg); overflow: hidden; background: var(--color-hover); }
+  .gallery-main img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; cursor: zoom-in; }
+  .gallery-main:hover img { transform: scale(1.15); }
+  .gallery-thumbs { display: flex; gap: 10px; margin-top: var(--space-3); }
+  .gallery-thumb { width: 84px; height: 84px; border-radius: var(--radius-sm); overflow: hidden; border: 2px solid transparent; opacity: 0.6; }
+  .gallery-thumb.active { border-color: var(--color-accent); opacity: 1; }
+  .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .pd-qty-row { display: flex; align-items: center; gap: var(--space-4); margin: var(--space-4) 0; }
+  .qty-stepper { display: flex; align-items: center; border: 1px solid var(--color-border); border-radius: var(--radius-full); }
+  .qty-stepper button { width: 40px; height: 40px; font-size: 18px; }
+  .qty-stepper span { width: 34px; text-align: center; font-weight: 600; }
+  .pd-actions { display: flex; gap: 12px; margin-top: var(--space-4); }
+  .pd-secondary-row { display: flex; gap: 16px; margin-top: var(--space-4); align-items: center; flex-wrap: wrap; }
+  .share-row { display: flex; gap: 8px; }
+  .pd-tabs { display: flex; gap: var(--space-5); border-bottom: 1px solid var(--color-border); margin-top: var(--space-8); }
+  .pd-tab { padding: 14px 0; font-weight: 600; font-size: 14px; color: var(--color-secondary); border-bottom: 2px solid transparent; }
+  .pd-tab.active { color: var(--color-primary); border-color: var(--color-accent); }
+  .pd-tab-panel { display: none; padding: var(--space-5) 0; }
+  .pd-tab-panel.active { display: block; }
+  #pdSpecs { width: 100%; border-collapse: collapse; }
+  #pdSpecs th { text-align: left; padding: 10px 0; width: 200px; color: var(--color-secondary); font-weight: 500; border-bottom: 1px solid var(--color-border); }
+  #pdSpecs td { padding: 10px 0; border-bottom: 1px solid var(--color-border); }
+</style>
+</head>
+<body data-page="shop">
+<div class="loader-screen" id="loaderScreen"><span class="loader-mark">Lumière</span></div>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header is-solid" id="siteHeader" data-force-solid="true">
+  <div class="container">
+    <a href="index.html" class="logo" aria-label="Lumière home">
+      <svg width="140" height="34" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#C89B3C"/><stop offset="100%" stop-color="#E4CE9A"/></linearGradient></defs><path d="M20 6 L23.5 17.5 L35 20 L23.5 22.5 L20 34 L16.5 22.5 L5 20 L16.5 17.5 Z" fill="url(#g1)"/><text x="44" y="27" font-family="'Playfair Display', Georgia, serif" font-size="22" fill="currentColor">Lumière</text></svg>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="index.html" class="nav-link" data-nav="home">Home</a>
+      <a href="products.html" class="nav-link" data-nav="shop">Shop</a>
+      <a href="products.html#collections" class="nav-link" data-nav="collections">Collections</a>
+      <a href="products.html?sort=newest" class="nav-link" data-nav="new">New Arrivals</a>
+      <a href="products.html?sort=popularity" class="nav-link" data-nav="best">Best Sellers</a>
+      <a href="about.html" class="nav-link" data-nav="about">About</a>
+      <a href="contact.html" class="nav-link" data-nav="contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-icon search-only-desktop" id="searchToggle" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
+      <a href="wishlist.html" class="btn-icon icon-badge" aria-label="Wishlist"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg><span class="count" id="wishlistCount">0</span></a>
+      <a href="cart.html" class="btn-icon icon-badge" aria-label="Cart"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg><span class="count" id="cartCount">0</span></a>
+      <a href="login.html" class="btn-icon" aria-label="Account"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 5-6 8-6s6.5 2 8 6"/></svg></a>
+      <button class="btn-icon menu-toggle" id="menuToggle" aria-label="Open menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-panel">
+    <div class="search-input-row"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input type="text" id="searchInput" placeholder="Search sofas, beds, tables…" autocomplete="off" /><button id="searchClose" aria-label="Close search">✕</button></div>
+    <div class="search-suggestions" id="searchSuggestions"></div>
+  </div>
+</div>
+<div class="mobile-nav" id="mobileNav">
+  <button id="mobileNavClose" class="btn-icon" style="margin-bottom:24px;">✕</button>
+  <a href="index.html">Home</a><a href="products.html">Shop</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="wishlist.html">Wishlist</a><a href="cart.html">Cart</a>
+</div>
+<div class="scrim" id="scrim"></div>
+
+<main id="main">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><a href="products.html">Shop</a><span class="sep">/</span><span id="breadcrumbCurrent">Loading…</span></div>
+
+    <div class="product-details-layout" id="productDetailsRoot">
+      <div>
+        <div class="gallery-main" id="galleryMain"><div class="skeleton" style="width:100%;height:100%;"></div></div>
+        <div class="gallery-thumbs" id="galleryThumbs"></div>
+      </div>
+      <div>
+        <span class="product-cat" id="pdCategory">&nbsp;</span>
+        <h1 class="section-title" style="font-size:32px;margin-top:6px;" id="pdName">&nbsp;</h1>
+        <div class="product-rating" style="margin-top:10px;">
+          <span class="stars" id="pdStars"></span>
+          <span id="pdRatingText" class="text-secondary"></span>
+          <span class="text-secondary">· SKU <span id="pdSku"></span></span>
+        </div>
+        <div class="product-price-row" style="font-size:22px;margin-top:var(--space-4);" id="pdPrice"></div>
+        <p class="text-secondary" id="pdDescription" style="margin-top:var(--space-4);line-height:1.7;"></p>
+        <p id="pdStock" style="font-weight:600;margin-top:var(--space-3);"></p>
+
+        <div class="pd-qty-row">
+          <div class="qty-stepper">
+            <button id="qtyMinus" aria-label="Decrease quantity">−</button>
+            <span id="pdQty">1</span>
+            <button id="qtyPlus" aria-label="Increase quantity">+</button>
+          </div>
+        </div>
+        <div class="pd-actions">
+          <button class="btn btn-primary btn-block" id="pdAddCart">Add to Cart</button>
+          <button class="btn btn-outline btn-block" id="pdBuyNow">Buy Now</button>
+        </div>
+        <div class="pd-secondary-row">
+          <button class="btn-icon icon-badge" id="pdWishlist" aria-label="Add to wishlist">♥</button>
+          <div class="share-row text-secondary">
+            <span style="font-size:12px;">Share:</span>
+            <button class="js-share" data-share="facebook" style="text-decoration:underline;">Facebook</button>
+            <button class="js-share" data-share="twitter" style="text-decoration:underline;">Twitter</button>
+            <button class="js-share" data-share="pinterest" style="text-decoration:underline;">Pinterest</button>
+          </div>
+          <a href="#" class="text-secondary" style="text-decoration:underline;font-size:13px;">+ Compare</a>
+        </div>
+
+        <div class="pd-tabs" role="tablist">
+          <button class="pd-tab active" data-tab="tabSpecs">Specifications</button>
+          <button class="pd-tab" data-tab="tabShipping">Shipping &amp; Delivery</button>
+          <button class="pd-tab" data-tab="tabReviews">Reviews</button>
+        </div>
+        <div class="pd-tab-panel active" id="tabSpecs"><table id="pdSpecs"></table></div>
+        <div class="pd-tab-panel" id="tabShipping">
+          <p class="text-secondary" style="line-height:1.8;">Every Lumière piece ships with white-glove delivery available at checkout — our team unpacks, places, and removes all packaging. Standard delivery arrives in 2–4 weeks; expedited options are available at checkout. All items are covered under our 10-year limited warranty against manufacturing defects.</p>
+        </div>
+        <div class="pd-tab-panel" id="tabReviews"><div id="pdReviews"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="background:var(--color-hover);">
+    <div class="container">
+      <div class="section-head left" style="max-width:none;"><span class="eyebrow">You May Also Like</span><h2 class="section-title">Related Products</h2></div>
+      <div class="product-grid" id="relatedGrid"></div>
+    </div>
+  </section>
+
+  <section class="section" id="recentlyViewedSection">
+    <div class="container">
+      <div class="section-head left" style="max-width:none;"><span class="eyebrow">Your History</span><h2 class="section-title">Recently Viewed</h2></div>
+      <div class="product-grid cols-3" id="recentlyViewedGrid"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="logo">Lumière</a><p>A premium furniture house crafting timeless, heirloom-quality pieces for considered living.</p>
+        <div class="footer-social"><a href="https://www.instagram.com" target="_blank" rel="noopener">IG</a><a href="https://www.pinterest.com" target="_blank" rel="noopener">PI</a><a href="https://www.facebook.com" target="_blank" rel="noopener">FB</a></div>
+      </div>
+      <div class="footer-col"><h4>Shop</h4><a href="products.html?category=Living%20Room">Living Room</a><a href="products.html?category=Bedroom">Bedroom</a><a href="products.html?category=Dining">Dining</a><a href="products.html?category=Office">Office</a><a href="products.html?category=Outdoor">Outdoor</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="contact.html">Contact</a><a href="faq.html">FAQ</a><a href="admin.html">Trade &amp; Admin</a></div>
+      <div class="footer-col"><h4>Support</h4><a href="returns.html">Shipping &amp; Returns</a><a href="faq.html">Help Center</a><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="mailto:concierge@lumiere.example">concierge@lumiere.example</a><a href="tel:+18005550142">+1 (800) 555-0142</a><a>140 Meridian Ave, New York, NY</a></div>
+    </div>
+    <div class="footer-bottom"><span>© <span class="js-year">2026</span> Lumière Furniture Co. All rights reserved.</span><div class="payment-icons"><span>Visa</span><span>Mastercard</span><span>PayPal</span><span>UPI</span></div></div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/wishlist.js"></script>
+<script src="js/products.js"></script>
+<script src="js/animation.js"></script>
+</body>
+</html>

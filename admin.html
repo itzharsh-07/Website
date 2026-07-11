@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin Dashboard | Lumière</title>
+<meta name="description" content="Lumière trade &amp; admin dashboard demo — inventory, orders, customers, and sales analytics." />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+<style>
+  body.admin-body { background: #F4F2ED; }
+  .admin-shell { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
+  .admin-sidebar { background: #111111; color: rgba(255,255,255,0.75); padding: var(--space-5) var(--space-4); position: sticky; top: 0; height: 100vh; }
+  .admin-sidebar .logo { color: #fff; margin-bottom: var(--space-6); display: block; }
+  .admin-nav a { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: var(--radius-sm); font-size: 14px; margin-bottom: 4px; }
+  .admin-nav a:hover, .admin-nav a.active { background: rgba(255,255,255,0.08); color: #fff; }
+  .admin-nav a.active { border-left: 2px solid var(--color-accent); }
+  .admin-main { padding: var(--space-5) var(--space-6); }
+  .admin-topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-5); }
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); margin-bottom: var(--space-5); }
+  .kpi-card { background: #fff; border-radius: var(--radius-md); padding: var(--space-4); box-shadow: var(--shadow-sm); }
+  .kpi-card .label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-secondary); }
+  .kpi-card .value { font-family: var(--font-heading); font-size: 28px; margin: 6px 0; }
+  .kpi-card .delta { font-size: 12px; color: var(--color-success); }
+  .admin-panel { background: #fff; border-radius: var(--radius-md); padding: var(--space-5); box-shadow: var(--shadow-sm); margin-bottom: var(--space-5); }
+  .admin-panel h3 { font-family: var(--font-body); font-size: 15px; margin-bottom: var(--space-4); }
+  table.admin-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  table.admin-table th { text-align: left; padding: 10px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-secondary); border-bottom: 1px solid var(--color-border); }
+  table.admin-table td { padding: 10px; border-bottom: 1px solid var(--color-border); }
+  table.admin-table img { width: 38px; height: 38px; object-fit: cover; border-radius: 6px; vertical-align: middle; margin-right: 8px; }
+  .bar-chart { display: flex; align-items: flex-end; gap: 10px; height: 180px; }
+  .bar-chart .bar { flex: 1; background: linear-gradient(180deg, var(--color-accent), var(--color-accent-soft)); border-radius: 6px 6px 0 0; position: relative; }
+  .bar-chart .bar span { position: absolute; bottom: -22px; left: 0; right: 0; text-align: center; font-size: 11px; color: var(--color-secondary); }
+  .admin-view { display: none; }
+  .admin-view.active { display: block; }
+  .status-pill { font-size: 11px; padding: 4px 10px; border-radius: var(--radius-full); font-weight: 600; }
+  .status-delivered { background: #DFF3E6; color: var(--color-success); }
+  .status-transit { background: #FDF1DA; color: var(--color-accent); }
+  .status-processing { background: #EFEFEF; color: var(--color-secondary); }
+</style>
+</head>
+<body class="admin-body" data-page="admin">
+<div class="admin-shell">
+  <aside class="admin-sidebar">
+    <a href="index.html" class="logo" style="font-family:var(--font-heading);font-size:22px;">Lumière</a>
+    <nav class="admin-nav" id="adminNav">
+      <a href="#" data-view="dashboard" class="active">Dashboard</a>
+      <a href="#" data-view="products">Products</a>
+      <a href="#" data-view="inventory">Inventory</a>
+      <a href="#" data-view="orders">Orders</a>
+      <a href="#" data-view="customers">Customers</a>
+      <a href="#" data-view="coupons">Coupons</a>
+      <a href="#" data-view="analytics">Sales Analytics</a>
+      <a href="index.html" style="margin-top:var(--space-5);border-top:1px solid rgba(255,255,255,0.1);padding-top:16px;">← Back to Store</a>
+    </nav>
+  </aside>
+
+  <div class="admin-main">
+    <div class="admin-topbar">
+      <h1 style="font-family:var(--font-heading);font-size:26px;" id="adminViewTitle">Dashboard</h1>
+      <button class="btn btn-primary btn-sm" id="addProductBtn">+ Add Product</button>
+    </div>
+
+    <!-- DASHBOARD -->
+    <section class="admin-view active" data-view-panel="dashboard">
+      <div class="kpi-grid">
+        <div class="kpi-card"><div class="label">Revenue (30d)</div><div class="value">$412,860</div><div class="delta">▲ 12.4% vs last period</div></div>
+        <div class="kpi-card"><div class="label">Orders</div><div class="value">1,284</div><div class="delta">▲ 6.1%</div></div>
+        <div class="kpi-card"><div class="label">Avg. Order Value</div><div class="value">$3,214</div><div class="delta">▲ 2.8%</div></div>
+        <div class="kpi-card"><div class="label">Conversion Rate</div><div class="value">3.4%</div><div class="delta">▲ 0.3pt</div></div>
+      </div>
+      <div class="admin-panel">
+        <h3>Revenue — Last 7 Months</h3>
+        <div class="bar-chart">
+          <div class="bar" style="height:52%;"><span>Jan</span></div>
+          <div class="bar" style="height:61%;"><span>Feb</span></div>
+          <div class="bar" style="height:58%;"><span>Mar</span></div>
+          <div class="bar" style="height:74%;"><span>Apr</span></div>
+          <div class="bar" style="height:69%;"><span>May</span></div>
+          <div class="bar" style="height:88%;"><span>Jun</span></div>
+          <div class="bar" style="height:100%;"><span>Jul</span></div>
+        </div>
+      </div>
+      <div class="admin-panel">
+        <h3>Recent Orders</h3>
+        <table class="admin-table" id="dashOrdersTable"><thead><tr><th>Order</th><th>Customer</th><th>Total</th><th>Status</th></tr></thead><tbody></tbody></table>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="admin-view" data-view-panel="products">
+      <div class="admin-panel">
+        <h3>Product Catalogue</h3>
+        <table class="admin-table"><thead><tr><th>Product</th><th>Category</th><th>Price</th><th>Stock</th><th>Rating</th><th>Actions</th></tr></thead><tbody id="adminProductsTable"></tbody></table>
+      </div>
+    </section>
+
+    <!-- INVENTORY -->
+    <section class="admin-view" data-view-panel="inventory">
+      <div class="admin-panel">
+        <h3>Low Stock Alerts</h3>
+        <table class="admin-table"><thead><tr><th>Product</th><th>SKU</th><th>Stock</th></tr></thead><tbody id="inventoryTable"></tbody></table>
+      </div>
+    </section>
+
+    <!-- ORDERS -->
+    <section class="admin-view" data-view-panel="orders">
+      <div class="admin-panel">
+        <h3>All Orders</h3>
+        <table class="admin-table" id="ordersTable"><thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th></tr></thead><tbody></tbody></table>
+      </div>
+    </section>
+
+    <!-- CUSTOMERS -->
+    <section class="admin-view" data-view-panel="customers">
+      <div class="admin-panel">
+        <h3>Customers</h3>
+        <table class="admin-table" id="customersTable"><thead><tr><th>Name</th><th>Email</th><th>Orders</th><th>Lifetime Value</th></tr></thead><tbody></tbody></table>
+      </div>
+    </section>
+
+    <!-- COUPONS -->
+    <section class="admin-view" data-view-panel="coupons">
+      <div class="admin-panel">
+        <h3>Active Coupons</h3>
+        <table class="admin-table"><thead><tr><th>Code</th><th>Discount</th><th>Uses</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>LUMIERE10</td><td>10%</td><td>412</td><td><span class="status-pill status-delivered">Active</span></td></tr>
+          <tr><td>WELCOME50</td><td>$50 off</td><td>891</td><td><span class="status-pill status-delivered">Active</span></td></tr>
+          <tr><td>SUMMER25</td><td>25%</td><td>203</td><td><span class="status-pill status-processing">Expired</span></td></tr>
+        </tbody></table>
+      </div>
+    </section>
+
+    <!-- ANALYTICS -->
+    <section class="admin-view" data-view-panel="analytics">
+      <div class="admin-panel">
+        <h3>Top Categories by Revenue</h3>
+        <div class="bar-chart">
+          <div class="bar" style="height:90%;"><span>Living</span></div>
+          <div class="bar" style="height:70%;"><span>Bedroom</span></div>
+          <div class="bar" style="height:60%;"><span>Dining</span></div>
+          <div class="bar" style="height:40%;"><span>Office</span></div>
+          <div class="bar" style="height:55%;"><span>Outdoor</span></div>
+          <div class="bar" style="height:30%;"><span>Decor</span></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+<script>
+(function () {
+  document.querySelectorAll('#adminNav a[data-view]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelectorAll('#adminNav a').forEach((a) => a.classList.remove('active'));
+      link.classList.add('active');
+      document.querySelectorAll('.admin-view').forEach((v) => v.classList.remove('active'));
+      document.querySelector(`[data-view-panel="${link.dataset.view}"]`).classList.add('active');
+      document.getElementById('adminViewTitle').textContent = link.textContent;
+    });
+  });
+
+  const demoOrders = [
+    { id: 'LUM-48213026', customer: 'Amelia Ross', items: 2, total: 6498, status: 'Delivered' },
+    { id: 'LUM-48119284', customer: 'James Hall', items: 1, total: 3899, status: 'In Transit' },
+    { id: 'LUM-47902211', customer: 'Sophie Lane', items: 3, total: 9812, status: 'Delivered' },
+    { id: 'LUM-47844410', customer: 'Daniel Kwan', items: 1, total: 1699, status: 'Processing' },
+    { id: 'LUM-47790023', customer: 'Olivia Moss', items: 2, total: 4599, status: 'Delivered' },
+  ];
+  const statusClass = { Delivered: 'status-delivered', 'In Transit': 'status-transit', Processing: 'status-processing' };
+
+  document.querySelector('#dashOrdersTable tbody').innerHTML = demoOrders.slice(0, 4).map((o) => `
+    <tr><td>${o.id}</td><td>${o.customer}</td><td>${Lumiere.formatPrice(o.total)}</td><td><span class="status-pill ${statusClass[o.status]}">${o.status}</span></td></tr>`).join('');
+
+  document.querySelector('#ordersTable tbody').innerHTML = demoOrders.map((o) => `
+    <tr><td>${o.id}</td><td>${o.customer}</td><td>${o.items}</td><td>${Lumiere.formatPrice(o.total)}</td><td><span class="status-pill ${statusClass[o.status]}">${o.status}</span></td></tr>`).join('');
+
+  const demoCustomers = [
+    { name: 'Amelia Ross', email: 'amelia.r@example.com', orders: 6, ltv: 24980 },
+    { name: 'James Hall', email: 'james.h@example.com', orders: 3, ltv: 11420 },
+    { name: 'Sophie Lane', email: 'sophie.l@example.com', orders: 9, ltv: 38210 },
+    { name: 'Daniel Kwan', email: 'daniel.k@example.com', orders: 1, ltv: 1699 },
+  ];
+  document.querySelector('#customersTable tbody').innerHTML = demoCustomers.map((c) => `
+    <tr><td>${c.name}</td><td>${c.email}</td><td>${c.orders}</td><td>${Lumiere.formatPrice(c.ltv)}</td></tr>`).join('');
+
+  fetch('/api/products').then((r) => r.json()).then((data) => {
+    document.getElementById('adminProductsTable').innerHTML = data.products.map((p) => `
+      <tr>
+        <td><img src="${p.images[0]}" alt="" />${p.name}</td>
+        <td>${p.category}</td>
+        <td>${Lumiere.formatPrice(p.priceFinal)}</td>
+        <td>${p.stock}</td>
+        <td>${p.rating} ★</td>
+        <td><button class="btn-sm btn btn-outline js-edit">Edit</button> <button class="btn-sm btn btn-outline js-delete">Delete</button></td>
+      </tr>`).join('');
+
+    const lowStock = data.products.filter((p) => p.stock <= 8);
+    document.getElementById('inventoryTable').innerHTML = lowStock.map((p) => `
+      <tr><td>${p.name}</td><td>${p.sku}</td><td style="color:${p.stock <= 5 ? 'var(--color-danger)' : 'inherit'};">${p.stock} units</td></tr>`).join('');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('js-edit')) showToast('Edit product modal (demo)');
+    if (e.target.classList.contains('js-delete')) showToast('Product removed (demo)', 'success');
+    if (e.target.id === 'addProductBtn') showToast('Add product modal (demo)');
+  });
+})();
+</script>
+</body>
+</html>

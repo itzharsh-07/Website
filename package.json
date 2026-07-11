@@ -1,0 +1,14 @@
+{
+  "name": "furniturestore",
+  "version": "1.0.0",
+  "description": "Lumière — premium furniture e-commerce experience",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.22.2"
+  }
+}

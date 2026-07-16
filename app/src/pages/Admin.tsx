@@ -20,11 +20,11 @@ const NAV: [View, string][] = [
 ];
 
 const DEMO_ORDERS = [
-  { id: 'LUM-48213026', customer: 'Amelia Ross', items: 2, total: 6498, status: 'Delivered' },
-  { id: 'LUM-48119284', customer: 'James Hall', items: 1, total: 3899, status: 'In Transit' },
-  { id: 'LUM-47902211', customer: 'Sophie Lane', items: 3, total: 9812, status: 'Delivered' },
-  { id: 'LUM-47844410', customer: 'Daniel Kwan', items: 1, total: 1699, status: 'Processing' },
-  { id: 'LUM-47790023', customer: 'Olivia Moss', items: 2, total: 4599, status: 'Delivered' },
+  { id: 'AUR-48213026', customer: 'Amelia Ross', items: 2, total: 6498, status: 'Delivered' },
+  { id: 'AUR-48119284', customer: 'James Hall', items: 1, total: 3899, status: 'In Transit' },
+  { id: 'AUR-47902211', customer: 'Sophie Lane', items: 3, total: 9812, status: 'Delivered' },
+  { id: 'AUR-47844410', customer: 'Daniel Kwan', items: 1, total: 1699, status: 'Processing' },
+  { id: 'AUR-47790023', customer: 'Olivia Moss', items: 2, total: 4599, status: 'Delivered' },
 ];
 const STATUS_COLOR: Record<string, { bg: string; fg: string }> = {
   Delivered: { bg: '#DFF3E6', fg: '#3F7A57' },
@@ -63,7 +63,7 @@ export default function Admin() {
   const [products, setProducts] = useState<Product[]>([]);
   const { showToast } = useToast();
 
-  useDocumentMeta({ title: 'Admin Dashboard | Lumière' });
+  useDocumentMeta({ title: 'Admin Dashboard | Aura' });
 
   useEffect(() => {
     api.getProducts().then((data) => setProducts(data.products));
@@ -75,7 +75,7 @@ export default function Admin() {
     <div className={styles.shell}>
       <aside className={styles.sidebar}>
         <Link to="/" className={styles.logo}>
-          Lumière
+          Aura
         </Link>
         <nav className={styles.nav}>
           {NAV.map(([key, label]) => (

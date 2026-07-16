@@ -8,7 +8,7 @@ export default function Footer() {
         <div className={styles.grid}>
           <div className={styles.brand}>
             <Link to="/" className={styles.logo}>
-              Lumière
+              Aura
             </Link>
             <p>A premium furniture house crafting timeless, heirloom-quality pieces for considered living.</p>
             <div className={styles.social}>
@@ -50,13 +50,13 @@ export default function Footer() {
           </div>
           <div className={styles.col}>
             <h3>Contact</h3>
-            <a href="mailto:concierge@lumiere.example">concierge@lumiere.example</a>
+            <a href="mailto:concierge@aura.example">concierge@aura.example</a>
             <a href="tel:+18005550142">+1 (800) 555-0142</a>
             <span>140 Meridian Ave, New York, NY</span>
           </div>
         </div>
         <div className={styles.bottom}>
-          <span>© {new Date().getFullYear()} Lumière Furniture Co. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Aura Furniture Co. All rights reserved.</span>
           <div className={styles.payments}>
             <span>Visa</span>
             <span>Mastercard</span>

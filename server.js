@@ -1,5 +1,5 @@
 /**
- * Lumière — Express server.
+ * Aura — Express server.
  * Serves the static site and a small demo API (products, orders, contact, newsletter).
  */
 const express = require('express');
@@ -123,7 +123,7 @@ app.get('/api/meta', (req, res) => {
 
 // ---------- API: demo order / contact / newsletter (no persistence, no real payment) ----------
 app.post('/api/orders', (req, res) => {
-  const orderNumber = `LUM-${Date.now().toString().slice(-8)}`;
+  const orderNumber = `AUR-${Date.now().toString().slice(-8)}`;
   const eta = new Date(Date.now() + 12 * 24 * 60 * 60 * 1000);
   res.json({
     success: true,
@@ -137,7 +137,7 @@ app.post('/api/contact', (req, res) => {
 });
 
 app.post('/api/newsletter', (req, res) => {
-  res.json({ success: true, message: 'You are on the list. Welcome to Lumière.' });
+  res.json({ success: true, message: 'You are on the list. Welcome to Aura.' });
 });
 
 // ---------- SEO ----------
@@ -178,5 +178,5 @@ app.use((req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Lumière running at http://localhost:${PORT}`);
+  console.log(`Aura running at http://localhost:${PORT}`);
 });

@@ -1,5 +1,5 @@
 /**
- * Lumière product catalogue.
+ * Aura product catalogue.
  * Single source of truth, served to the front end via /api/products.
  */
 
@@ -168,7 +168,7 @@ const products = RAW.map((p, i) => {
   const rating = +(3.9 + (((id * 13) % 11) / 10)).toFixed(1);
   return {
     id,
-    sku: `LUM-${String(id).padStart(4, '0')}`,
+    sku: `AUR-${String(id).padStart(4, '0')}`,
     slug,
     name: p.name,
     category: p.cat,

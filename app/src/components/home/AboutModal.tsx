@@ -9,7 +9,7 @@ interface Props {
 const SECTIONS = [
   {
     title: 'Luxury Villas of Design',
-    body: 'Every Lumière piece begins as a private commission mindset — sketched, refined, and built as though it were furnishing a single extraordinary home, then made available to yours.',
+    body: 'Every Aura piece begins as a private commission mindset — sketched, refined, and built as though it were furnishing a single extraordinary home, then made available to yours.',
   },
   {
     title: 'Architectural Philosophy',

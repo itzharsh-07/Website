@@ -7,7 +7,7 @@ interface MetaOptions {
   jsonLd?: object | object[];
 }
 
-const DEFAULT_TITLE = 'Lumière | Furniture Crafted for Timeless Living';
+const DEFAULT_TITLE = 'Aura | Furniture Crafted for Timeless Living';
 
 /** Sets document title/meta description and injects JSON-LD for the current route, cleaning up on unmount. */
 export function useDocumentMeta({ title, description, jsonLd }: MetaOptions) {

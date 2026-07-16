@@ -3,7 +3,7 @@ import type { WishlistItem } from '../types/cart';
 import type { Product } from '../types/product';
 import { useToast } from './ToastContext';
 
-const STORAGE_KEY = 'lumiere_wishlist';
+const STORAGE_KEY = 'aura_wishlist';
 
 type Action = { type: 'TOGGLE'; item: WishlistItem } | { type: 'REMOVE'; id: number };
 

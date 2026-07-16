@@ -59,7 +59,7 @@ export default function Navbar({ forceSolid = false }: Props) {
     <>
       <header className={`${styles.header} ${solid ? styles.solid : ''}`}>
         <div className={`container ${styles.inner}`}>
-          <Link to="/" className={styles.logo} aria-label="Lumière home">
+          <Link to="/" className={styles.logo} aria-label="Aura home">
             <svg width="140" height="34" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="navGold" x1="0" y1="0" x2="1" y2="1">
@@ -69,7 +69,7 @@ export default function Navbar({ forceSolid = false }: Props) {
               </defs>
               <path d="M20 6 L23.5 17.5 L35 20 L23.5 22.5 L20 34 L16.5 22.5 L5 20 L16.5 17.5 Z" fill="url(#navGold)" />
               <text x="44" y="27" fontFamily="'Playfair Display', Georgia, serif" fontSize="22" fill="currentColor">
-                Lumière
+                Aura
               </text>
             </svg>
           </Link>

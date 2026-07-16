@@ -1,4 +1,4 @@
-// Shapes match the existing localStorage schema (lumiere_cart / lumiere_wishlist)
+// Shapes match the existing localStorage schema (aura_cart / aura_wishlist)
 // exactly, so a visitor's cart/wishlist from the previous vanilla-JS site keeps working.
 
 export interface CartItem {

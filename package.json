@@ -1,7 +1,7 @@
 {
   "name": "furniturestore",
   "version": "1.0.0",
-  "description": "Lumière — premium furniture e-commerce experience",
+  "description": "Aura — premium furniture e-commerce experience",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

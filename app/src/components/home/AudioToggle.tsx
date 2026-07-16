@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from '../../lib/scroll';
 import styles from './AudioToggle.module.css';
 
-const STORAGE_KEY = 'lumiere_audio_enabled';
+const STORAGE_KEY = 'aura_audio_enabled';
 
 export default function AudioToggle() {
   const audioRef = useRef<HTMLAudioElement>(null);

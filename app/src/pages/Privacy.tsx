@@ -5,11 +5,11 @@ export default function Privacy() {
     <LegalLayout
       title="Privacy Policy"
       subtitle="Last updated January 1, 2026"
-      metaTitle="Privacy Policy | Lumière"
-      metaDescription="How Lumière collects, uses and protects your personal information."
+      metaTitle="Privacy Policy | Aura"
+      metaDescription="How Aura collects, uses and protects your personal information."
     >
       <p>
-        Lumière Furniture Co. (&ldquo;Lumière&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) respects your privacy. This
+        Aura Furniture Co. (&ldquo;Aura&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) respects your privacy. This
         policy explains what information we collect, how we use it, and the choices you have.
       </p>
       <h2>Information We Collect</h2>
@@ -39,11 +39,11 @@ export default function Privacy() {
       <h2>Your Rights</h2>
       <p>
         You may request access to, correction of, or deletion of your personal data at any time by contacting
-        privacy@lumiere.example.
+        privacy@aura.example.
       </p>
       <h2>Contact</h2>
       <p>
-        Questions about this policy can be directed to privacy@lumiere.example or 140 Meridian Avenue, New York, NY
+        Questions about this policy can be directed to privacy@aura.example or 140 Meridian Avenue, New York, NY
         10011.
       </p>
     </LegalLayout>

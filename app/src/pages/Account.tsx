@@ -4,15 +4,15 @@ import { useToast } from '../context/ToastContext';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
 import styles from './Account.module.css';
 
-const STORAGE_KEY = 'lumiere_user';
+const STORAGE_KEY = 'aura_user';
 
 type AuthTab = 'signin' | 'register' | 'forgot';
 type ProfileTab = 'orders' | 'addresses' | 'wishlist';
 
 const DEMO_ORDERS = [
-  { id: 'LUM-48213026', date: 'June 2, 2026', items: 2, status: 'Delivered' },
-  { id: 'LUM-48119284', date: 'April 18, 2026', items: 1, status: 'In Transit' },
-  { id: 'LUM-47902211', date: 'February 3, 2026', items: 3, status: 'Delivered' },
+  { id: 'AUR-48213026', date: 'June 2, 2026', items: 2, status: 'Delivered' },
+  { id: 'AUR-48119284', date: 'April 18, 2026', items: 1, status: 'In Transit' },
+  { id: 'AUR-47902211', date: 'February 3, 2026', items: 3, status: 'Delivered' },
 ];
 
 function loadUser(): { name: string } | null {
@@ -30,8 +30,8 @@ export default function Account() {
   const { showToast } = useToast();
 
   useDocumentMeta({
-    title: 'Account | Lumière',
-    description: 'Sign in to your Lumière account to view orders, saved addresses and your wishlist.',
+    title: 'Account | Aura',
+    description: 'Sign in to your Aura account to view orders, saved addresses and your wishlist.',
   });
 
   const signIn = (name: string) => {

@@ -5,11 +5,11 @@ export default function Terms() {
     <LegalLayout
       title="Terms of Service"
       subtitle="Last updated January 1, 2026"
-      metaTitle="Terms of Service | Lumière"
-      metaDescription="Terms and conditions for shopping with Lumière."
+      metaTitle="Terms of Service | Aura"
+      metaDescription="Terms and conditions for shopping with Aura."
     >
       <p>
-        These Terms of Service govern your use of the Lumière website and your purchase of products from us. By
+        These Terms of Service govern your use of the Aura website and your purchase of products from us. By
         placing an order, you agree to these terms.
       </p>
       <h2>Orders &amp; Pricing</h2>
@@ -34,12 +34,12 @@ export default function Terms() {
       </p>
       <h2>Intellectual Property</h2>
       <p>
-        All content on this site — including designs, photography, and text — is the property of Lumière Furniture
+        All content on this site — including designs, photography, and text — is the property of Aura Furniture
         Co. and may not be reproduced without permission.
       </p>
       <h2>Limitation of Liability</h2>
       <p>
-        Lumière shall not be liable for indirect, incidental, or consequential damages arising from the use of our
+        Aura shall not be liable for indirect, incidental, or consequential damages arising from the use of our
         products or website, to the fullest extent permitted by law.
       </p>
       <h2>Governing Law</h2>

@@ -11,8 +11,8 @@ export default function Contact() {
   const [sending, setSending] = useState(false);
 
   useDocumentMeta({
-    title: 'Contact Us | Lumière',
-    description: 'Reach the Lumière design concierge team — showroom visits, trade inquiries, and customer support.',
+    title: 'Contact Us | Aura',
+    description: 'Reach the Aura design concierge team — showroom visits, trade inquiries, and customer support.',
   });
 
   const onSubmit = async (e: FormEvent) => {
@@ -77,7 +77,7 @@ export default function Contact() {
               <div className={styles.icon}>✉</div>
               <div>
                 <strong>Email</strong>
-                <p className="textSecondary">concierge@lumiere.example</p>
+                <p className="textSecondary">concierge@aura.example</p>
               </div>
             </div>
             <div className={styles.infoRow}>
@@ -98,13 +98,13 @@ export default function Contact() {
               <div className={styles.icon}>✎</div>
               <div>
                 <strong>Trade &amp; Design Partners</strong>
-                <p className="textSecondary">trade@lumiere.example</p>
+                <p className="textSecondary">trade@aura.example</p>
               </div>
             </div>
             <div style={{ borderRadius: 'var(--radius-lg)', overflow: 'hidden', marginTop: 'var(--space-4)', aspectRatio: '16/9' }}>
               <img
                 src="/img/800/450/showroom?lock=402"
-                alt="Lumière flagship showroom interior"
+                alt="Aura flagship showroom interior"
                 loading="lazy"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />

@@ -13,7 +13,7 @@ const FAQS = [
     a: 'We work exclusively in solid hardwoods, full-grain leathers, natural marble and stone, and cast or forged metals — never particleboard, veneer, or bonded leather.',
   },
   { q: 'What is your return policy?', a: 'You may return most items within 30 days of delivery for a full refund, provided they are in original condition. See our Shipping & Returns page for full details.' },
-  { q: 'Do you offer a warranty?', a: 'Every Lumière piece is covered by a 10-year limited warranty against manufacturing defects in materials and construction.' },
+  { q: 'Do you offer a warranty?', a: 'Every Aura piece is covered by a 10-year limited warranty against manufacturing defects in materials and construction.' },
   { q: 'Can I customize fabric or finish?', a: 'Select collections offer alternate finishes and upholstery. Reach out to our design concierge team via the Contact page for custom quotes.' },
   { q: 'Do you ship internationally?', a: 'We currently ship within the United States and Canada. International shipping is available on request for select collections — contact our concierge team for a quote.' },
   { q: 'How do I care for leather and wood pieces?', a: 'Each order ships with a care guide specific to its materials. In general, keep wood pieces out of direct sunlight and condition leather every 6–12 months.' },
@@ -36,8 +36,8 @@ export default function FAQ() {
   );
 
   useDocumentMeta({
-    title: 'Frequently Asked Questions | Lumière',
-    description: 'Answers to common questions about Lumière orders, shipping, materials, warranty and returns.',
+    title: 'Frequently Asked Questions | Aura',
+    description: 'Answers to common questions about Aura orders, shipping, materials, warranty and returns.',
     jsonLd,
   });
 

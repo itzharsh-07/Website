@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: lumiere-furniture
+    name: aura-furniture
     runtime: node
     plan: free
     buildCommand: npm install && npm run build

@@ -13,7 +13,7 @@ import ReviewList from '../components/product/ReviewList';
 import type { Product } from '../types/product';
 import styles from './ProductDetails.module.css';
 
-const RECENTLY_VIEWED_KEY = 'lumiere_recently_viewed';
+const RECENTLY_VIEWED_KEY = 'aura_recently_viewed';
 
 interface RecentlyViewedItem {
   id: number;
@@ -82,7 +82,7 @@ export default function ProductDetails() {
       image: product.images,
       description: product.description,
       sku: product.sku,
-      brand: { '@type': 'Brand', name: 'Lumière' },
+      brand: { '@type': 'Brand', name: 'Aura' },
       offers: {
         '@type': 'Offer',
         priceCurrency: 'USD',
@@ -94,7 +94,7 @@ export default function ProductDetails() {
   }, [product]);
 
   useDocumentMeta({
-    title: product ? `${product.name} | Lumière` : undefined,
+    title: product ? `${product.name} | Aura` : undefined,
     description: product?.shortDescription,
     jsonLd,
   });
@@ -226,7 +226,7 @@ export default function ProductDetails() {
               {tab === 'specs' && <SpecsTable product={p} />}
               {tab === 'shipping' && (
                 <p className="textSecondary" style={{ lineHeight: 1.8 }}>
-                  Every Lumière piece ships with white-glove delivery available at checkout — our team unpacks, places, and
+                  Every Aura piece ships with white-glove delivery available at checkout — our team unpacks, places, and
                   removes all packaging. Standard delivery arrives in 2–4 weeks; expedited options are available at
                   checkout. All items are covered under our 10-year limited warranty.
                 </p>

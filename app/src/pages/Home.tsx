@@ -25,14 +25,14 @@ export default function Home() {
       />
 
       {/* Anchor section for the About step — the modal itself carries the real content. */}
-      <section ref={aboutRef} aria-label="About Lumière" style={{ padding: 'var(--space-8) 0', textAlign: 'center' }}>
+      <section ref={aboutRef} aria-label="About Aura" style={{ padding: 'var(--space-8) 0', textAlign: 'center' }}>
         <div className="container">
           <span className="eyebrow" style={{ justifyContent: 'center' }}>
             Est. 2002
           </span>
           <h2 className="sectionTitle">Two Decades of Craft</h2>
           <p className="sectionSub" style={{ maxWidth: 560, margin: '12px auto 0' }}>
-            Lumière began in a single workshop dedicated to one idea: furniture should be made to outlive trends.
+            Aura began in a single workshop dedicated to one idea: furniture should be made to outlive trends.
           </p>
           <button className="btn btnOutline" style={{ marginTop: 'var(--space-5)' }} onClick={() => setAboutOpen(true)}>
             Explore Our Story

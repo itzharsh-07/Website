@@ -4,15 +4,15 @@ import styles from './About.module.css';
 
 export default function About() {
   useDocumentMeta({
-    title: 'Our Story | Lumière',
-    description: 'For over two decades, Lumière has crafted heirloom-quality furniture for discerning homes.',
+    title: 'Our Story | Aura',
+    description: 'For over two decades, Aura has crafted heirloom-quality furniture for discerning homes.',
   });
 
   return (
     <div>
       <section className={styles.hero}>
         <div className={styles.heroMedia}>
-          <img src="/img/1920/1000/workshop?lock=401" alt="Lumière workshop" />
+          <img src="/img/1920/1000/workshop?lock=401" alt="Aura workshop" />
         </div>
         <div className={`container ${styles.heroContent}`}>
           <span className="eyebrow">Est. 2002</span>
@@ -20,7 +20,7 @@ export default function About() {
             Two Decades of <em>Craft</em>
           </h1>
           <p className={styles.heroDesc}>
-            Lumière began in a single workshop dedicated to one idea: furniture should be made to outlive trends, and
+            Aura began in a single workshop dedicated to one idea: furniture should be made to outlive trends, and
             to be handed down.
           </p>
         </div>
@@ -33,14 +33,14 @@ export default function About() {
             <h2 className="sectionTitle">Built for the Long Term</h2>
           </div>
           <p style={{ fontSize: 18, lineHeight: 1.9, color: 'var(--color-secondary)' }}>
-            Every Lumière piece begins as a sketch, refined over months with our in-house design studio and a network
+            Every Aura piece begins as a sketch, refined over months with our in-house design studio and a network
             of master artisans across Italy, Denmark and the American Southeast. We work only in solid woods,
             full-grain leathers, hand-honed marble, and metals cast to last — never veneers, never particleboard. The
             result is furniture that ages with dignity: patinas deepen, leathers soften, and grain grows richer with
             every year of use.
           </p>
           <p style={{ fontSize: 18, lineHeight: 1.9, color: 'var(--color-secondary)', marginTop: 'var(--space-4)' }}>
-            Today, over 120 artisans contribute to the Lumière collection, and more than 58,000 homes around the world
+            Today, over 120 artisans contribute to the Aura collection, and more than 58,000 homes around the world
             live with pieces we&rsquo;ve made. We remain, as we always have, a company obsessed with the details no
             one else notices — until they live with them.
           </p>

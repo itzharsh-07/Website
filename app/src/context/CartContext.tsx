@@ -13,7 +13,7 @@ export interface AddableItem {
   color?: string | null;
 }
 
-const STORAGE_KEY = 'lumiere_cart';
+const STORAGE_KEY = 'aura_cart';
 const SHIPPING_FLAT = 45;
 const FREE_SHIPPING_THRESHOLD = 1500;
 const TAX_RATE = 0.0725;

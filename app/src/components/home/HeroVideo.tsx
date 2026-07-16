@@ -24,7 +24,7 @@ const HeroVideo = forwardRef<HTMLElement, Props>(function HeroVideo(
         else if (ref) (ref as MutableRefObject<HTMLElement | null>).current = node;
       }}
       className={styles.hero}
-      aria-label="Lumière — cinematic introduction"
+      aria-label="Aura — cinematic introduction"
     >
       <div className={styles.mediaLayer} data-parallax-depth="0.6">
         <video

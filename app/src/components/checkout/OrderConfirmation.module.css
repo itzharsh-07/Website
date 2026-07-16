@@ -1,0 +1,25 @@
+.wrap {
+  text-align: center;
+  padding: var(--space-8) 0;
+  grid-column: 1 / -1;
+}
+.circle {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--color-success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-5);
+}
+.details {
+  max-width: 420px;
+  margin: var(--space-5) auto;
+  text-align: left;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}

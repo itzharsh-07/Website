@@ -9,11 +9,27 @@ const { registerImageRoute, warmCache } = require('./image-cache');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const DIST_DIR = path.join(__dirname, 'dist');
+const INDEX_HTML = path.join(DIST_DIR, 'index.html');
 
 app.use(express.json());
 registerImageRoute(app);
-app.use(express.static(path.join(__dirname), { extensions: ['html'] }));
-app.use(express.static(path.join(__dirname, 'public')));
+
+// Hashed build assets (dist/assets/*) are immutable and cached for a year;
+// everything else — critically index.html, the SPA shell — must never be
+// cached, or a returning visitor can get stuck on a shell that references
+// bundle hashes from a previous deploy.
+app.use(
+  express.static(DIST_DIR, {
+    setHeaders: (res, filePath) => {
+      if (filePath.startsWith(path.join(DIST_DIR, 'assets') + path.sep)) {
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+      } else {
+        res.setHeader('Cache-Control', 'no-cache');
+      }
+    },
+  })
+);
 
 // Site-wide decorative imagery (hero, category cards, gallery, etc.), kept in
 // sync with the /img URLs referenced directly in the HTML templates.
@@ -145,6 +161,20 @@ app.get('/robots.txt', (req, res) => {
   res.type('text/plain');
   const base = `${req.protocol}://${req.get('host')}`;
   res.send(`User-agent: *\nAllow: /\nSitemap: ${base}/sitemap.xml`);
+});
+
+// ---------- SPA fallback ----------
+// Any remaining GET that isn't a static asset or one of the routes above is
+// a client-side route (e.g. /products.html, /product-details.html?slug=...)
+// — serve the SPA shell and let React Router take over. Deliberately
+// path-less rather than app.get('*', ...): Express 5's stricter
+// path-to-regexp rejects a bare '*' wildcard, so this form stays correct
+// regardless of Express major version.
+app.use((req, res, next) => {
+  if (req.method !== 'GET' || !req.accepts('html')) return next();
+  res.sendFile(INDEX_HTML, (err) => {
+    if (err) next(err);
+  });
 });
 
 app.listen(PORT, () => {

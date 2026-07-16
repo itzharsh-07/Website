@@ -1,0 +1,76 @@
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-7);
+  padding: var(--space-5) 0 var(--space-8);
+}
+
+.qtyRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin: var(--space-4) 0;
+}
+.stepper {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+}
+.stepper button {
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+}
+.stepper span {
+  width: 34px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: var(--space-4);
+}
+.secondaryRow {
+  display: flex;
+  gap: 16px;
+  margin-top: var(--space-4);
+  align-items: center;
+  flex-wrap: wrap;
+}
+.shareRow {
+  display: flex;
+  gap: 8px;
+}
+.shareRow button {
+  text-decoration: underline;
+}
+
+.tabs {
+  display: flex;
+  gap: var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+  margin-top: var(--space-8);
+}
+.tab {
+  padding: 14px 0;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-secondary);
+  border-bottom: 2px solid transparent;
+}
+.tab.active {
+  color: var(--color-primary);
+  border-color: var(--color-accent);
+}
+.tabPanel {
+  padding: var(--space-5) 0;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}

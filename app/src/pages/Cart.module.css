@@ -1,0 +1,233 @@
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: var(--space-6);
+  align-items: start;
+  padding: var(--space-6) 0 var(--space-8);
+}
+/* Every direct grid item needs min-width:0 — a 1fr track's implicit minimum
+   is its item's min-content size, so without this, a single long-enough
+   descendant anywhere in the subtree can still force this outer column
+   (and the whole page) wider than the viewport, no matter how many of its
+   own descendants already have min-width:0. */
+.layout > * {
+  min-width: 0;
+}
+
+.itemsCard {
+  background: var(--color-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 0 var(--space-5);
+  overflow: hidden;
+}
+
+.head {
+  display: grid;
+  grid-template-columns: 96px 1fr 140px 150px 44px;
+  gap: var(--space-4);
+  align-items: center;
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.head span {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-secondary);
+}
+.head .colCenter {
+  text-align: center;
+}
+.head .colRight {
+  text-align: right;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 96px 1fr 140px 150px 44px;
+  grid-template-areas: 'image info qty total delete';
+  gap: var(--space-4);
+  align-items: center;
+  padding: var(--space-5) 0;
+  border-bottom: 1px solid var(--color-border);
+  transition: background var(--dur-fast) var(--ease-luxury);
+}
+.row:last-child {
+  border-bottom: none;
+}
+
+/* These wrappers only exist to give the mobile layout below two real
+   flex rows to stack; at desktop widths they disappear from the box tree
+   so imageWrap/info/qty/lineTotal/deleteIcon place directly into the named
+   grid areas above, regardless of DOM order. */
+.topGroup,
+.bottomGroup {
+  display: contents;
+}
+
+.imageWrap {
+  grid-area: image;
+  width: 96px;
+  height: 96px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+}
+.imageWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-luxury);
+}
+.row:hover .imageWrap img {
+  transform: scale(1.08);
+}
+
+.info {
+  grid-area: info;
+  min-width: 0;
+}
+.name {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 500;
+  transition: color var(--dur-fast);
+}
+.row:hover .name {
+  color: var(--color-accent-text);
+}
+.meta {
+  font-size: 13px;
+  color: var(--color-secondary);
+  margin-top: 3px;
+}
+.unitPrice {
+  color: var(--color-secondary);
+  font-size: 14px;
+}
+
+.qty {
+  grid-area: qty;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  width: fit-content;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.qty button {
+  width: 34px;
+  height: 34px;
+  font-size: 15px;
+  transition: all var(--dur-fast);
+}
+.qty button:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+.qty span {
+  width: 32px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.lineTotal {
+  grid-area: total;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: right;
+}
+
+.deleteIcon {
+  grid-area: delete;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-secondary);
+  transition: all var(--dur-fast);
+  justify-self: end;
+}
+.deleteIcon:hover {
+  background: var(--color-danger);
+  color: #fff;
+  transform: scale(1.06);
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 14px;
+}
+.summaryTotal {
+  font-size: 18px;
+  font-weight: 700;
+  border-top: 1px solid var(--color-border);
+  margin-top: 8px;
+  padding-top: 16px;
+}
+
+.empty {
+  text-align: center;
+  padding: var(--space-9) 0;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .head {
+    display: none;
+  }
+  /* Real flex rows on mobile instead of a spanning grid — text content in a
+     spanned fr-track can force the whole card wider than the viewport
+     ("grid blowout"), which a plain flex row with min-width:0 can't do. */
+  .row {
+    display: block;
+    padding: var(--space-4) 0;
+  }
+  .topGroup {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+  .bottomGroup {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+    padding-left: calc(72px + var(--space-3));
+  }
+  .imageWrap {
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
+  }
+  .info {
+    flex: 1;
+    min-width: 0;
+  }
+  .deleteIcon {
+    flex-shrink: 0;
+  }
+  .qty {
+    margin: 0;
+  }
+  .lineTotal {
+    white-space: nowrap;
+  }
+  .unitPrice {
+    display: none;
+  }
+}

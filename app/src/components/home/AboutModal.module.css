@@ -1,0 +1,70 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 800;
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  animation: fadeIn 0.4s var(--ease-luxury);
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.panel {
+  position: relative;
+  width: min(920px, 100%);
+  max-height: 86vh;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-lg);
+  padding: var(--space-7) var(--space-6);
+  animation: scaleIn 0.5s var(--ease-luxury);
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.94) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-hover);
+  font-size: 16px;
+}
+
+.title {
+  font-size: clamp(28px, 3.4vw, 42px);
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+}
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: var(--color-accent-text);
+}
+.card p {
+  color: var(--color-secondary);
+  line-height: 1.7;
+}
+
+@media (max-width: 700px) {
+  .grid { grid-template-columns: 1fr; }
+  .panel { padding: var(--space-6) var(--space-4); }
+}

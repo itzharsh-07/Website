@@ -1,5 +1,7 @@
 node_modules/
 cache/
+dist/
 *.log
 gh-auth-*.txt
 .env
+media-backup/

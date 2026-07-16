@@ -1,0 +1,25 @@
+.toggle {
+  position: fixed;
+  left: var(--space-4);
+  bottom: var(--space-4);
+  z-index: 400;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(17, 17, 17, 0.5);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--dur-fast) var(--ease-luxury);
+}
+.toggle:hover {
+  background: var(--color-accent);
+  color: #111;
+  transform: translateY(-2px);
+}
+.toggle.on {
+  background: var(--color-accent);
+  color: #111;
+}

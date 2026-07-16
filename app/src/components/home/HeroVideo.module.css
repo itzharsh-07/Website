@@ -1,0 +1,104 @@
+.hero {
+  position: relative;
+  height: 100svh;
+  min-height: 640px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: #fff;
+  perspective: 1200px;
+}
+
+.mediaLayer {
+  position: absolute;
+  inset: -2%;
+  z-index: 0;
+  will-change: transform;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 10, 10, 0.4) 0%, rgba(10, 10, 10, 0.28) 40%, rgba(10, 10, 10, 0.72) 100%);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  will-change: transform;
+}
+
+.title {
+  font-size: clamp(40px, 6.4vw, 84px);
+  margin-top: var(--space-4);
+  font-weight: 500;
+  font-family: var(--font-heading);
+  line-height: 1.08;
+}
+.title em {
+  font-style: italic;
+  color: var(--color-accent-soft);
+}
+
+.desc {
+  margin-top: var(--space-4);
+  font-size: 18px;
+  max-width: 520px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.actions {
+  margin-top: var(--space-6);
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.scrollHint {
+  position: absolute;
+  bottom: var(--space-5);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  z-index: 1;
+  color: rgba(255, 255, 255, 0.8);
+}
+.scrollLine {
+  width: 1px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+  position: relative;
+}
+.scrollLine::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 40%;
+  background: #fff;
+  position: absolute;
+  animation: scrollLine 2s infinite cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes scrollLine {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(250%); }
+}
+
+@media (max-width: 600px) {
+  .title { font-size: clamp(34px, 8vw, 56px); }
+  .actions { flex-direction: column; align-items: flex-start; }
+  .actions .btn { width: 100%; }
+}

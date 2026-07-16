@@ -1,0 +1,50 @@
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: var(--space-6);
+  padding: var(--space-6) 0 var(--space-8);
+  align-items: start;
+}
+/* See Cart.module.css .layout for why this is needed: a 1fr grid track's
+   implicit minimum is its item's min-content size, so without this a long
+   descendant anywhere inside (e.g. an order-review line item) can still
+   force this column — and the page — wider than the viewport. */
+.layout > * {
+  min-width: 0;
+}
+
+.stepActions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-5);
+}
+
+.deliveryOption,
+.paymentOption {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+.deliveryOption.selected,
+.paymentOption.selected {
+  border-color: var(--color-accent);
+  background: var(--color-hover);
+}
+
+.paymentDetail {
+  padding: 14px;
+  background: var(--color-hover);
+  border-radius: var(--radius-sm);
+  margin: -4px 0 12px;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}

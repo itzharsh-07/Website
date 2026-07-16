@@ -1,0 +1,63 @@
+/* ==========================================================================
+   LUMIÈRE — Design tokens
+   Ported verbatim from the original css/style.css so the visual language
+   carries over unchanged into the React rebuild.
+   ========================================================================== */
+:root {
+  /* Palette */
+  --color-bg: #F8F7F4;
+  --color-primary: #111111;
+  --color-secondary: #666666;
+  --color-accent: #C89B3C;
+  --color-accent-soft: #E4CE9A;
+  /* Darker gold for text on light backgrounds — #C89B3C only reaches ~2.4:1
+     contrast on --color-bg/--color-card, well under WCAG AA's 4.5:1 for
+     normal text. Use this instead of --color-accent for gold text sitting
+     on a light surface; --color-accent itself is still correct for
+     backgrounds, borders, icons, and gold text on dark surfaces. */
+  --color-accent-text: #8C6B23;
+  --color-card: #FFFFFF;
+  --color-hover: #F3EEE4;
+  --color-border: #E7E3DB;
+  --color-success: #3F7A57;
+  --color-danger: #B3452C;
+
+  /* Cinematic layer additions */
+  --color-scrim: rgba(10, 10, 10, 0.55);
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.18);
+
+  /* Typography */
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+  --space-8: 96px;
+  --space-9: 128px;
+
+  /* Radii & shadow */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 999px;
+  --shadow-sm: 0 2px 8px rgba(17, 17, 17, 0.06);
+  --shadow-md: 0 8px 30px rgba(17, 17, 17, 0.08);
+  --shadow-lg: 0 24px 60px rgba(17, 17, 17, 0.14);
+  --shadow-gold: 0 12px 32px rgba(200, 155, 60, 0.25);
+
+  /* Motion */
+  --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 0.25s;
+  --dur-med: 0.5s;
+  --dur-slow: 0.9s;
+
+  --container: 1360px;
+  --header-h: 88px;
+}

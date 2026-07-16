@@ -1,0 +1,84 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 17, 17, 0.55);
+  backdrop-filter: blur(6px);
+  z-index: 600;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 12vh;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur-fast) ease;
+}
+.overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.panel {
+  background: #fff;
+  width: min(680px, 92vw);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-16px);
+  transition: transform var(--dur-med) var(--ease-luxury);
+}
+.overlay.open .panel {
+  transform: translateY(0);
+}
+
+.inputRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-3);
+}
+.inputRow input {
+  flex: 1;
+  border: none;
+  background: none;
+  font-size: 20px;
+  font-family: var(--font-heading);
+}
+
+.suggestions {
+  margin-top: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+.suggestion {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  transition: background var(--dur-fast);
+}
+.suggestion:hover {
+  background: var(--color-hover);
+}
+.suggestion img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+.name {
+  font-weight: 500;
+}
+.price {
+  margin-left: auto;
+  color: var(--color-accent-text);
+  font-weight: 600;
+}
+.empty {
+  padding: 16px 10px;
+  color: var(--color-secondary);
+}

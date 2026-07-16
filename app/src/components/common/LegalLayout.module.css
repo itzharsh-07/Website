@@ -1,0 +1,14 @@
+.content h2 {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  margin: var(--space-6) 0 var(--space-3);
+}
+.content p,
+.content li {
+  color: var(--color-secondary);
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+.content ul {
+  padding-left: 20px;
+}

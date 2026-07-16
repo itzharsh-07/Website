@@ -1,0 +1,15 @@
+.review {
+  margin-bottom: 16px;
+}
+.head {
+  display: flex;
+  justify-content: space-between;
+}
+.stars {
+  color: var(--color-accent-text);
+  margin: 6px 0;
+}
+.title {
+  font-weight: 600;
+  margin-bottom: 4px;
+}

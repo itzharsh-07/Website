@@ -1,0 +1,72 @@
+.tracker {
+  position: fixed;
+  right: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 400;
+  display: flex;
+  align-items: center;
+}
+
+.line {
+  position: absolute;
+  left: 3px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.25);
+}
+.fill {
+  width: 100%;
+  background: var(--color-accent);
+  transition: height 0.1s linear;
+}
+
+.tracker ul {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-left: 0;
+}
+
+.dot {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transition: all var(--dur-fast) var(--ease-luxury);
+}
+.dot.active {
+  background: var(--color-accent);
+  transform: scale(1.8);
+  box-shadow: 0 0 0 4px rgba(200, 155, 60, 0.25);
+}
+
+.label {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fff;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity var(--dur-fast) ease;
+  pointer-events: none;
+  background: rgba(17, 17, 17, 0.7);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+.dot:hover .label,
+.dot.active .label {
+  opacity: 1;
+}
+
+@media (max-width: 900px) {
+  .tracker {
+    display: none;
+  }
+}

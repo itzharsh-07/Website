@@ -1,0 +1,111 @@
+.card {
+  position: sticky;
+  top: calc(var(--header-h) + 24px);
+}
+.title {
+  font-family: var(--font-body);
+  font-size: 16px;
+  margin-bottom: var(--space-3);
+}
+
+.items {
+  margin-bottom: var(--space-4);
+  max-height: 320px;
+  overflow-y: auto;
+  margin-left: calc(-1 * var(--space-2));
+  margin-right: calc(-1 * var(--space-2));
+}
+.item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 10px var(--space-2);
+  border-radius: var(--radius-sm);
+  transition: background var(--dur-fast) var(--ease-luxury);
+}
+.item:hover {
+  background: var(--color-hover);
+}
+.itemImageWrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.itemImageWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease-luxury);
+}
+.item:hover .itemImageWrap img {
+  transform: scale(1.1);
+}
+.itemQtyBadge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+  box-shadow: 0 0 0 2px #fff;
+}
+.itemInfo {
+  flex: 1;
+  min-width: 0;
+}
+.itemName {
+  font-weight: 500;
+  font-size: 14px;
+  transition: color var(--dur-fast);
+}
+.item:hover .itemName {
+  color: var(--color-accent-text);
+}
+.itemMeta {
+  font-size: 12px;
+  color: var(--color-secondary);
+  margin-top: 2px;
+}
+.itemPrice {
+  font-size: 14px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.promoRow {
+  display: flex;
+  gap: 8px;
+  margin-bottom: var(--space-4);
+}
+.promoRow input {
+  flex: 1;
+  padding: 12px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 14px;
+}
+.total {
+  font-size: 18px;
+  font-weight: 700;
+  border-top: 1px solid var(--color-border);
+  margin-top: 8px;
+  padding-top: 16px;
+}
